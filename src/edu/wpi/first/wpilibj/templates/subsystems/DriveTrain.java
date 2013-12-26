@@ -58,7 +58,7 @@ public class DriveTrain {
             double angle = gyro.getAngle();
             SmartDashboard.putNumber("Gyro", DriveTrain.gyro.getAngle());
             //calculate motor output
-            kP = SmartDashboard.getNumber("kP", 3);
+            kP = SmartDashboard.getNumber("kP", 2);
             double rightMotorOutput = 0.4 + kP * angle;
             double leftMotorOutput = 0.4 - kP * angle;
             if (rightMotorOutput > 1) {

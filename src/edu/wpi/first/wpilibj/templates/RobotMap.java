@@ -26,7 +26,19 @@ public class RobotMap {
             leftDrivePWM2 = 2,
             rightDrivePWM1 = 7,
             rightDrivePWM2 = 8,
-            shooterPWM1 = 3,
+            shooterPWM1 = 3,utton = 3, //Joystick (Right)
+            fireButton = 1, //Joystick (Right)
+            safetyButton = 10, //Joystick (right)
+            autoAngleButton = 6, //Gamepad
+            toggleFeedButton = 8, //Gamepad
+            raiseAngleButton = 5, //Gamepad
+            lowerAngleButton = 7, //Gamepad
+            climbButton1 = 3, //Gamepad
+            climbButton2 = 1, //Gamepad
+            resetGyroButton = 2, //right joystick
+            //PWM's:             
+            leftDrivePWM1 = 1,
+            leftDrivePWM2 = 2,
             shooterPWM2 = 4,
             anglePWM = 5,
             winchPWM = 6,
@@ -38,7 +50,7 @@ public class RobotMap {
             angleAChannelDin = 3,
             angleBChannelDin = 4,
             //gyros:
-            gyro = 1,
+            gyro = 2,
             //Limit Switches:
             shooterAngleLimitLower = 8,
             shooterAngleLimitUpper = 9,

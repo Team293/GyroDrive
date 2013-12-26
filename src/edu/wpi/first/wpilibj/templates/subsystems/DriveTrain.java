@@ -23,6 +23,8 @@ public class DriveTrain {
 
     /**
      * TankDrive is driving the robot like a... tank.
+     * @param leftSpeed
+     * @param rightSpeed
      */
     public static void tankDrive(double leftSpeed, double rightSpeed) {
         drive.tankDrive(leftSpeed * 0.8, rightSpeed * 0.8);
@@ -30,6 +32,8 @@ public class DriveTrain {
 
     /**
      * ArcadeDrive is driving the robot similar to a RC car.
+     * @param moveSpeed
+     * @param rotationalSpeed
      */
     public static void arcadeDrive(double moveSpeed, double rotationalSpeed) {
         drive.arcadeDrive(moveSpeed, rotationalSpeed);
@@ -37,6 +41,7 @@ public class DriveTrain {
 
     /**
      * Rotates the robot at a defined speed.
+     * @param rotationalSpeed
      */
     public static void rotateDrive(double rotationalSpeed) {
         drive.arcadeDrive(0, rotationalSpeed);
@@ -44,15 +49,18 @@ public class DriveTrain {
 
     static double kP = 0;
 
+    
     public static void driveStraight(long time) {
         long startTime = System.currentTimeMillis();
         while (System.currentTimeMillis() - startTime < time) {
             //read the gyro
+            OI.controlGyro();
             double angle = gyro.getAngle();
+            SmartDashboard.putNumber("Gyro", DriveTrain.gyro.getAngle());
             //calculate motor output
-            kP = SmartDashboard.getNumber("kP", 4);
-            double rightMotorOutput = 0.2 + kP * angle;
-            double leftMotorOutput = 0.2 - kP * angle;
+            kP = SmartDashboard.getNumber("kP", 3);
+            double rightMotorOutput = 0.4 + kP * angle;
+            double leftMotorOutput = 0.4 - kP * angle;
             if (rightMotorOutput > 1) {
                 rightMotorOutput = 1;
             }
@@ -66,7 +74,7 @@ public class DriveTrain {
                 leftMotorOutput = -1;
             }
             //set motor output
-            tankDrive(leftMotorOutput, rightMotorOutput);
+            tankDrive(-leftMotorOutput, rightMotorOutput);
         }
     }
 

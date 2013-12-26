@@ -18,13 +18,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Vision;
  */
 public class Spike extends IterativeRobot {
 
-    private static boolean readyToFire = false;
     private static final DriverStationLCD LCD = DriverStationLCD.getInstance();
-    private static final Timer timer = new Timer();
-    //Angles for shooting in autonomous.  Auto aiming does not work very well through the pyramid.  
-    private static double sideShotAngle = 8.214,
-            centerShotAngle = 7.35;
-    public static DigitalInput autonomousSwitch = new DigitalInput(RobotMap.autonomousSwitch);
     public static boolean initEmergencyConstantValue = true;
 
     /**
@@ -32,14 +26,7 @@ public class Spike extends IterativeRobot {
      * used here.
      */
     public void robotInit() {
-        //Initialize angle and shooter
-        Angle.angleInit();
-        Shooter.shooterInit();
-//        //start and reset the timer
-        timer.start();
-        timer.reset();
-//        //Clear the LCD
-        LCD.updateLCD();
+        SmartDashboard.putNumber("kP", 2);
     }
 
     /**
@@ -48,11 +35,10 @@ public class Spike extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         SmartDashboard.putNumber("Gyro", DriveTrain.gyro.getAngle());
-        OI.controlGyro();
         DriveTrain.driveStraight(10000);
         try {
-            Thread.sleep(1000);
-        } catch (Exception e) {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
         }
     }
 

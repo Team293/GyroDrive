@@ -41,7 +41,8 @@ public class OI {
             climbButton1 = new JoystickButton(gamepad, RobotMap.climbButton1),
             climbButton2 = new JoystickButton(gamepad, RobotMap.climbButton2),
             safetyButton = new JoystickButton(rightJoystick, RobotMap.safetyButton),
-            fireButton = new JoystickButton(rightJoystick, RobotMap.fireButton);
+            fireButton = new JoystickButton(rightJoystick, RobotMap.fireButton),
+            resetGyroButton = new JoystickButton(rightJoystick, RobotMap.resetGyroButton);
     private static final DriverStationLCD LCD = DriverStationLCD.getInstance();
 
     /**
@@ -51,11 +52,20 @@ public class OI {
      */
     public static void driveRobot() {
         if (autoAimButton.get() == false) {
-            SmartDashboard.putNumber("gamepad left Y: ", gamepad.getRawAxis(2));
-            SmartDashboard.putNumber("gamepad right y: ", gamepad.getRawAxis(4));
-            DriveTrain.tankDrive(gamepad.getRawAxis(2), gamepad.getRawAxis(4));
+//            SmartDashboard.putNumber("gamepad left Y: ", gamepad.getRawAxis(2));
+//            SmartDashboard.putNumber("gamepad right y: ", gamepad.getRawAxis(4));
+//            DriveTrain.tankDrive(gamepad.getRawAxis(2), gamepad.getRawAxis(4));
+            DriveTrain.tankDrive(leftJoystick.getY(), rightJoystick.getY());
+            SmartDashboard.putNumber("LeftJoystick", leftJoystick.getY());
+            SmartDashboard.putNumber("RightJoystick", rightJoystick.getY());
         }
         //Else you're auto aiming...
+    }
+
+    public static void controlGyro() {
+        if (resetGyroButton.get()) {
+            DriveTrain.gyro.reset();
+        }
     }
 
     /**

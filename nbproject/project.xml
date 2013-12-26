@@ -9,10 +9,10 @@
     <type>org.netbeans.modules.ant.freeform</type>
     <configuration>
         <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
-            <name>Ultimate_Ascent_With_Gyro</name>
+            <name>UltimateAscentWithGyro</name>
         </general-data>
         <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
-            <name>Ultimate_Ascent_With_Gyro</name>
+            <name>UltimateAscentWithGyro</name>
             <properties>
                 <property-file>${user.home}/.sunspotfrc.properties</property-file>
                 <property-file>build.properties</property-file>
@@ -120,7 +120,7 @@
             <compilation-unit>
                 <package-root>C:\Users\Robotics Laptop B\Dropbox\Programming\Team 293 Library Jars</package-root>
                 <package-root>src</package-root>
-                <classpath mode="compile">wpilibj.jar;C:\Users\Peter\sunspotfrcsdk\lib\networktables-crio.jar</classpath>
+                <classpath mode="compile">C:\Users\Peter\sunspotfrcsdk\lib\networktables-crio.jar;C:\Users\Peter\sunspotfrcsdk\lib\squawk.jar;C:\Users\Peter\sunspotfrcsdk\lib\wpilibj.jar</classpath>
                 <built-to>build</built-to>
                 <source-level>1.4</source-level>
             </compilation-unit>
